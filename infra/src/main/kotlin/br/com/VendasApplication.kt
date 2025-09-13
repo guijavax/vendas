@@ -1,4 +1,4 @@
-package br.om.vendas
+package br.com
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class VendasApplication
 
 fun main(args: Array<String>) {
-	runApplication<VendasApplication>(*args)
+    runApplication<VendasApplication>(*args)
 }

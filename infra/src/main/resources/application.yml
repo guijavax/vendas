@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: vendas
+  datasource:
+    # DEV: H2 em memória
+    url:  jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:vendas}
+    username: adm
+    password: adm
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update   # dev: cria/atualiza
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  sql:
+    init:
+      mode: always       # executa data.sql em dev
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: vendas-dev
+      auto-offset-reset: earliest
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod   # use com: --spring.profiles.active=prod
+  datasource:
+    url: jdbc:postgresql://<HOST>:5432/<DB>
+    username: <USER>
+    password: <PASSWORD>
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: validate   # prod: valida (não altera schema)
+    properties:
+      hibernate:
+        format_sql: false
+        default_schema: public
+    open-in-view: false
+  sql:
+    init:
+      mode: never
+
+  kafka:
+    bootstrap-servers: <KAFKA1:9092>,<KAFKA2:9092>
+    consumer:
+      group-id: vendas
+      auto-offset-reset: latest
+    producer:
+      acks: all
+      retries: 3
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
