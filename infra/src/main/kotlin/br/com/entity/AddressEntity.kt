@@ -1,5 +1,6 @@
 package br.com.entity
 
+import br.com.domain.Customer
 import br.com.entity.enums.AddressType
 import jakarta.persistence.*
 import java.time.OffsetDateTime
