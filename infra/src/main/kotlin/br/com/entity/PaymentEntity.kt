@@ -1,7 +1,7 @@
 package br.com.entity
 
-import br.com.entity.enums.PaymentMethod
-import br.com.entity.enums.PaymentStatus
+import br.com.entity.enums.PaymentMethodEntity
+import br.com.entity.enums.PaymentStatusEntity
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.OffsetDateTime
@@ -18,11 +18,11 @@ data class PaymentEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "method", nullable = false)
-    var method: PaymentMethod,
+    var method: PaymentMethodEntity,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    var status: PaymentStatus = PaymentStatus.PENDING,
+    var status: PaymentStatusEntity = PaymentStatusEntity.PENDING,
 
     @Column(name = "amount", nullable = false, precision = 12, scale = 2)
     var amount: BigDecimal,

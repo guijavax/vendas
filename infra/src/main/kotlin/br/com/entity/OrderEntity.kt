@@ -1,6 +1,6 @@
 package br.com.entity
 
-import br.com.entity.enums.OrderStatus
+import br.com.entity.enums.OrderStatusEntity
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.OffsetDateTime
@@ -26,7 +26,7 @@ data class OrderEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    var status: OrderStatus = OrderStatus.DRAFT,
+    var status: OrderStatusEntity = OrderStatusEntity.DRAFT,
 
     @Column(name = "notes")
     var notes: String? = null,

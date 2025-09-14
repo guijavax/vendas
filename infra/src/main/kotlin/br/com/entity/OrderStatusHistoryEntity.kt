@@ -1,6 +1,6 @@
 package br.com.entity
 
-import br.com.entity.enums.OrderStatus
+import br.com.entity.enums.OrderStatusEntity
 import jakarta.persistence.*
 import java.time.OffsetDateTime
 
@@ -16,11 +16,11 @@ data class OrderStatusHistoryEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "old_status")
-    var oldStatus: OrderStatus? = null,
+    var oldStatus: OrderStatusEntity? = null,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "new_status", nullable = false)
-    var newStatus: OrderStatus,
+    var newStatus: OrderStatusEntity,
 
     @Column(name = "changed_at", nullable = false)
     var changedAt: OffsetDateTime = OffsetDateTime.now()

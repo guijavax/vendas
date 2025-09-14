@@ -1,6 +1,6 @@
 package br.com.entity
 
-import br.com.entity.enums.AddressType
+import br.com.entity.enums.AddressTypeEntity
 import jakarta.persistence.*
 import java.time.OffsetDateTime
 
@@ -17,7 +17,7 @@ data class AddressEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "kind", nullable = false)
-    open var kind: AddressType,
+    open var kind: AddressTypeEntity,
 
     @Column(name = "line1", nullable = false)
     open var line1: String,

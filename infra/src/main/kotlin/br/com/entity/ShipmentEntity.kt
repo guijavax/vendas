@@ -1,6 +1,6 @@
 package br.com.entity
 
-import br.com.entity.enums.ShipmentStatus
+import br.com.entity.enums.ShipmentStatusEntity
 import jakarta.persistence.*
 import java.time.OffsetDateTime
 
@@ -28,5 +28,5 @@ data class ShipmentEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    var status: ShipmentStatus = ShipmentStatus.PENDING
+    var status: ShipmentStatusEntity = ShipmentStatusEntity.PENDING
 )
