@@ -5,6 +5,8 @@ plugins {
     kotlin("plugin.spring") version "1.9.24"
     jacoco
     application
+    kotlin("plugin.noarg") version "1.9.24"
+    kotlin("plugin.allopen") version "1.9.24"
 }
 
 group = "br.com"
@@ -39,6 +41,13 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+noArg { annotation("jakarta.persistence.Entity") }
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
 }
 
 application {
