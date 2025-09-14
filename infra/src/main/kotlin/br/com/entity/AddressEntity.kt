@@ -1,6 +1,5 @@
 package br.com.entity
 
-import br.com.domain.Customer
 import br.com.entity.enums.AddressType
 import jakarta.persistence.*
 import java.time.OffsetDateTime
@@ -14,7 +13,7 @@ data class AddressEntity(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
-    open var customer: Customer,
+    open var customer: CustomerEntity,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "kind", nullable = false)
