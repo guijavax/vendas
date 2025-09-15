@@ -6,7 +6,7 @@ import java.time.OffsetDateTime
 
 
 @Entity
-@Table(name = "products")
+@Table(name = "products", schema = "sales")
 data class ProductEntity(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
