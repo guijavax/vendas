@@ -39,7 +39,7 @@ data class OrderEntity(
 )
 
 @Embeddable
-data class OrderItemId(
+data class OrderItemIdEntity(
     @Column(name = "order_id") var orderId: Long? = null,
     @Column(name = "item_no") var itemNo: Int? = null
 )
@@ -48,7 +48,7 @@ data class OrderItemId(
 @Table(name = "order_items")
 data class OrderItemEntity(
     @EmbeddedId
-    var id: OrderItemId = OrderItemId(),
+    var id: OrderItemIdEntity = OrderItemIdEntity(),
 
     @Column(name = "product_id", nullable = false)
     var productId: Long,
